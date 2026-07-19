@@ -1,0 +1,23 @@
+.confetti{
+position:fixed;
+top:-20px;
+width:10px;
+height:18px;
+border-radius:3px;
+animation:fall 4s linear forwards;
+z-index:9999;
+}
+
+@keyframes fall{
+
+0%{
+transform:translateY(0) rotate(0deg);
+opacity:1;
+}
+
+100%{
+transform:translateY(110vh) rotate(720deg);
+opacity:0;
+}
+
+}
