@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -8,297 +10,249 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
+
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
+
 
 body{
-font-family:Poppins,sans-serif;
-background:linear-gradient(#FFF8F2,#F5E8D7);
-padding:20px;
-color:#6B4F3A;
+
+    font-family:Poppins,sans-serif;
+    background:linear-gradient(#FFF8F2,#F5E8D7);
+    padding:20px;
+    color:#6B4F3A;
+
 }
+
 
 .container{
-max-width:900px;
-margin:auto;
+
+    max-width:900px;
+    margin:auto;
+
 }
+
 
 .header{
-text-align:center;
-margin-bottom:25px;
+
+    text-align:center;
+    margin-bottom:25px;
+
 }
+
 
 .header h1{
-font-size:34px;
-margin-bottom:5px;
-color:#8B5E3C;
+
+    font-size:34px;
+    margin-bottom:5px;
+    color:#8B5E3C;
+
 }
+
 
 .header p{
-font-size:18px;
+
+    font-size:18px;
+
 }
 
+
 #cardID{
-margin-top:15px;
-font-weight:bold;
-font-size:18px;
-color:#A67C52;
+
+    margin-top:15px;
+    font-weight:bold;
+    font-size:18px;
+    color:#A67C52;
+
 }
+
+
+
+/* Bingo Board */
 
 .board{
 
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:10px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
 
 }
+
+
 
 .cell{
 
-background:white;
-border-radius:15px;
-padding:18px;
-min-height:90px;
+    background:white;
+    border-radius:15px;
+    padding:18px;
+    min-height:90px;
 
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
 
-cursor:pointer;
+    cursor:pointer;
 
-font-weight:500;
+    font-weight:500;
 
-box-shadow:0 5px 12px rgba(0,0,0,.08);
+    box-shadow:0 5px 12px rgba(0,0,0,.08);
 
-transition:.25s;
+    transition:.25s;
 
 }
+
+
 
 .cell:hover{
 
-transform:scale(1.04);
+    transform:scale(1.04);
 
 }
+
+
 
 .marked{
 
-background:#B08968;
-color:white;
+    background:#B08968;
+    color:white;
 
 }
+
+
 
 .center{
 
-font-size:45px;
-background:#8B5E3C;
-color:white;
+    font-size:45px;
+    background:#8B5E3C;
+    color:white;
 
 }
+
+
+
+/* Mobile */
 
 @media(max-width:700px){
 
 .board{
-grid-template-columns:repeat(5,1fr);
-gap:6px;
+
+    grid-template-columns:repeat(5,1fr);
+    gap:6px;
+
 }
+
 
 .cell{
-font-size:12px;
-padding:10px;
-min-height:70px;
+
+    font-size:12px;
+    padding:10px;
+    min-height:70px;
+
 }
+
 
 .center{
-font-size:34px;
+
+    font-size:34px;
+
 }
 
 }
+
+
 
 /* Confetti */
 
 .confetti{
-position:fixed;
-top:-20px;
-width:10px;
-height:18px;
-border-radius:3px;
-animation:fall 4s linear forwards;
-z-index:9999;
+
+    position:fixed;
+    top:-20px;
+    width:10px;
+    height:18px;
+    border-radius:3px;
+    animation:fall 4s linear forwards;
+    z-index:9999;
+
 }
+
 
 @keyframes fall{
 
 0%{
+
 transform:translateY(0) rotate(0deg);
 opacity:1;
+
 }
+
 
 100%{
+
 transform:translateY(110vh) rotate(720deg);
 opacity:0;
+
 }
 
 }
+
 
 </style>
 
+
 </head>
+
 
 <body>
 
+
 <div class="container">
+
 
 <div class="header">
 
+
 <h1>🧸 Baby Gift Opening Bingo</h1>
 
-<p>Tap a square only when that gift is opened.</p>
+
+<p>
+Tap a square only when that gift is opened.
+</p>
+
 
 <div id="cardID"></div>
 
+
 </div>
+
+
 
 <div class="board" id="bingo-board"></div>
 
+
+
 </div>
 
-<script>
 
-const gifts=[
 
-"Diapers",
-"Baby Wipes",
-"Onesie",
-"Bib",
-"Pacifier",
-"Bottle",
-"Burp Cloth",
-"Receiving Blanket",
-"Baby Socks",
-"Baby Hat",
-"Baby Lotion",
-"Baby Shampoo",
-"Hooded Towel",
-"Washcloth",
-"Baby Book",
-"Stuffed Animal",
-"Diaper Bag",
-"Bottle Brush",
-"Bottle Warmer",
-"Thermometer",
-"Teething Toy",
-"Crib Sheet",
-"Swaddle",
-"Car Seat",
-"Baby Monitor",
-"Gift Card",
-"Swing",
-"Bouncer",
-"Baby Bath",
-"Baby Carrier",
-"Sound Machine",
-"High Chair",
-"Baby Shoes",
-"Muslin Blanket",
-"Baby Towels",
-"Night Light",
-"Bottle Drying Rack",
-"Rattle",
-"Changing Pad",
-"Baby Powder",
-"Baby Oil",
-"Baby Comb",
-"Nail Kit",
-"Baby Spoon",
-"Bottle Sterilizer",
-"Play Mat",
-"Activity Gym",
-"Toy Blocks",
-"Story Book",
-"Baby Hangers",
-"Blanket",
-"Travel Stroller",
-"Pacifier Clip",
-"Baby Mittens",
-"Baby Gown",
-"Baby Pajamas",
-"Baby Bath Tub",
-"Feeding Set",
-"Snack Cup",
-"Baby Walker",
-"Tummy Time Mat",
-"Storage Basket"
+<!-- Guest ID Generator -->
+<script src="qr.js"></script>
 
-];
 
-function shuffle(array){
-
-for(let i=array.length-1;i>0;i--){
-
-let j=Math.floor(Math.random()*(i+1));
-
-[array[i],array[j]]=[array[j],array[i]];
-
-}
-
-}
-
-function generateCard(){
-
-shuffle(gifts);
-
-let selected=gifts.slice(0,24);
-
-selected.splice(12,0,"🧸");
-
-const board=document.getElementById("board");
-
-board.innerHTML="";
-
-selected.forEach((item,index)=>{
-
-let cell=document.createElement("div");
-
-cell.className="cell";
-
-cell.innerHTML=item;
-
-if(index===12){
-
-cell.classList.add("center");
-cell.classList.add("marked");
-
-}
-
-cell.onclick = function () {
-
-    if (index !== 12) {
-
-        cell.classList.toggle("marked");
-
-        checkBingo();
-
-    }
-
-};
-
-board.appendChild(cell);
-
-});
-
-document.getElementById("cardID").innerHTML="Card #"+Math.floor(100000+Math.random()*900000);
-
-}
-
-generateCard();
-
+<!-- Confetti + Bingo Winner -->
 <script src="confetti.js"></script>
 
+
+<!-- Main Bingo System -->
+<script type="module" src="bingo.js"></script>
+
+
+
 </body>
+
 </html>
