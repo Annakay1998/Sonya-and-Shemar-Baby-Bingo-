@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sonya & Shemar's Baby Shower & Gender Reveal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Poppins,sans-serif;
+    background:linear-gradient(#FFF8F2,#F5E8D7);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    overflow:hidden;
+}
+
+.container{
+    width:90%;
+    max-width:420px;
+    background:white;
+    border-radius:25px;
+    padding:35px 25px;
+    text-align:center;
+    box-shadow:0 12px 30px rgba(0,0,0,.12);
+}
+
+.teddy{
+    font-size:70px;
+    animation:bounce 2s infinite;
+}
+
+h1{
+    font-family:'Great Vibes',cursive;
+    color:#8B5E3C;
+    font-size:42px;
+    margin-top:10px;
+}
+
+h2{
+    color:#6B4F3A;
+    font-size:22px;
+    margin-bottom:15px;
+}
+
+.tagline{
+    color:#A67C52;
+    font-style:italic;
+    margin-bottom:25px;
+}
+
+.message{
+    color:#555;
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+.instructions{
+    background:#F8F2EA;
+    padding:18px;
+    border-radius:18px;
+    color:#6B4F3A;
+    line-height:1.6;
+}
+
+.loading{
+    margin-top:30px;
+    font-weight:bold;
+    color:#8B5E3C;
+}
+
+.dots::after{
+    content:"";
+    animation:dots 2s infinite;
+}
+
+@keyframes dots{
+0%{content:"";}
+25%{content:".";}
+50%{content:"..";}
+75%{content:"...";}
+100%{content:"";}
+}
+
+@keyframes bounce{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+}
+</style>
+
+<script>
+setTimeout(function(){
+    window.location.href="bingo.html";
+},3000);
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="teddy">🧸</div>
+
+<h1>Sonya & Shemar's</h1>
+
+<h2>Baby Shower & Gender Reveal</h2>
+
+<p class="tagline">
+A Sweet Little Miracle Is on the Way...<br>
+Let's Find Out as We Bearly Can Wait! 🤎
+</p>
+
+<p class="message">
+Thank you for celebrating our little miracle with us.<br><br>
+Your love, laughter, and well wishes mean the world to our growing family.
+</p>
+
+<div class="instructions">
+
+<h3>🎁 Baby Gift Opening Bingo</h3>
+
+<br>
+
+Tap each square only when you see that gift being unwrapped.
+
+<br><br>
+
+✨ Every guest receives a unique Bingo card.
+
+<br><br>
+
+🏆 First to get 5 in a row wins!
+
+</div>
+
+<div class="loading">
+
+Loading your unique Bingo card<span class="dots"></span>
+
+</div>
+
+ <div id="bingo-board"></div>
+
+  <script type="module" src="bingo.js"></script>
+</body>
+</html>
