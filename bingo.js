@@ -5,14 +5,17 @@ function shuffle(array) {
 }
 
 function getSavedCard() {
-  const savedCard = localStorage.getItem("bingoCard");
+  const guestID = localStorage.getItem("guestID");
+  const storageKey = `bingoCard-${guestID}`;
+
+  const savedCard = localStorage.getItem(storageKey);
 
   if (savedCard) {
     return JSON.parse(savedCard);
   }
 
   const newCard = generateBingoCard();
-  localStorage.setItem("bingoCard", JSON.stringify(newCard));
+  localStorage.setItem(storageKey, JSON.stringify(newCard));
 
   return newCard;
 }
